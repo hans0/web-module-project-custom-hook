@@ -5,7 +5,7 @@ import { useState } from 'react';
 const useLocalStorage = (key, initialValue) => {
   // To retrieve an item from localStorage, call localStorage.getItem('itemName')
   // If that item doesn't exist, it will return undefined
-  [storedValue, setStoredValue] = useState(() => {
+  const [storedValue, setStoredValue] = useState(() => {
      // Get from local storage by key
     const item = window.localStorage.getItem(key);
     // Parse and return stored json or, if undefined, return initialValue
@@ -19,7 +19,7 @@ const useLocalStorage = (key, initialValue) => {
     window.localStorage.setItem(key, JSON.stringify(value));
   }
 
-  return [storedValue];
+  return [storedValue, setValue];
 }
 
 export default useLocalStorage;
